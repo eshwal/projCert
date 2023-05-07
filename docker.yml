@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: slave
   become: yes
   vars: 
      dockerceversion: 5:18.09.9~3-0~ubuntu-bionic
