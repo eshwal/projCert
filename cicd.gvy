@@ -6,14 +6,14 @@ pipeline {
                 // step1 
                 echo 'running installation'
 		            git url: 'https://github.com/eshwal/projCert.git'
-		            sh script: 'ansible-playbook --inventory /tmp/inv $WORKSPACE/puppet.yml'
+		            sh script: 'ansible-playbook $WORKSPACE/puppet.yml --inventory /tmp/inv '
            }
         }
         stage('push ansible configuration') {
 	         steps {
                 // step2
                 echo 'installing docker..'
-		            sh script: 'ansible-playbook --inventory /tmp/inv $WORKSPACE/docker.yml'
+		            sh script: 'ansible-playbook $WORKSPACE/docker.yml --inventory /tmp/inv '
            }
         }
         stage('containerization') {
