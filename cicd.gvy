@@ -13,7 +13,7 @@ pipeline {
 	         steps {
                 // step2
                 echo 'installing docker..'
-		            sh script: 'ansible-playbook --inventory /tmp/inv $WORKSPACE/puppet.yml'
+		            sh script: 'ansible-playbook --inventory /tmp/inv $WORKSPACE/docker.yml'
            }
         }
         stage('containerization') {
