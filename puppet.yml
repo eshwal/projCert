@@ -1,8 +1,8 @@
 ---
-- hosts: all
+- hosts: slave
   vars:
-    agent_name: 172.31.29.118
-    server_name: 172.31.24.17
+    agent_name: slave
+    server_name: master
   tasks:
     - name: Install package from .deb file
       apt:
