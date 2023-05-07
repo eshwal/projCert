@@ -8,7 +8,6 @@
       apt:
         deb:
           path: https://apt.puppetlabs.com/puppet6-release-focal.deb
-      state: present
       update_cache: true
       ignore_errors: true
     - name: Install puppet agent
