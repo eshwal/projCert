@@ -1,0 +1,29 @@
+---
+- hosts: all
+  vars:
+    agent_name: 172.31.29.118
+    server_name: 172.31.24.17
+  tasks:
+    - name: Install package from .deb file
+      apt:
+        deb:
+          path: https://apt.puppetlabs.com/puppet6-release-focal.deb
+      state: present
+      update_cache: true
+      ignore_errors: true
+    - name: Install puppet agent
+      apt:
+        state: present
+        name: puppet-agent
+        update_cache: yes
+    - name: Config path to access puppet commands
+      shell: export PATH=/opt/puppetlabs/bin:$PATH
+    - name: Configure server settings
+      shell: puppet config set server 172.31.24.17 --section main
+    - name: Connect agent to primary
+      shell: puppet ssl bootstrap
+    - name: Sign Certificate
+      shell: sudo puppetserver ca sign --certname “{{agent_name}}”
+      delegate_to: “{{server_name}}”
+    - name: Connect agent to primary
+      shell: puppet ssl bootstrap
