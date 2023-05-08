@@ -13,7 +13,6 @@
       apt:
         name: ['apt-transport-https','ca-certificates','curl','gnupg2','software-properties-common']
         state: present
-        update_cache: yes
       ignore_errors: true
     - name: Add Docker APT repository
       apt_repository:
