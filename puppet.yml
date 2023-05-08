@@ -17,6 +17,8 @@
       ignore_errors: true
     - name: Config path to access puppet commands
       shell: export PATH=/opt/puppetlabs/bin:$PATH
+    - name: Changing directory to path of puppet
+      shell: cd/opt/puppetlabs/bin 
     - name: Configure server settings
       shell: puppet config set server 172.31.24.17 --section main
     - name: Connect agent to primary
