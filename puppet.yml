@@ -5,6 +5,10 @@
     agent_name: slave
     server_name: master
   tasks:
+    - name: Install puppet-common
+      apt:
+       state: present
+       name: puppet-common
     - name: Install package from .deb file
       apt:
         deb: https://apt.puppetlabs.com/puppet6-release-focal.deb
