@@ -13,7 +13,6 @@
       apt:
         state: present
         name: puppet-agent
-        update_cache: yes
       ignore_errors: true
     - name: Config path to access puppet commands
       shell: export PATH=/opt/puppetlabs/bin:$PATH
