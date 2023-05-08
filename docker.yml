@@ -20,6 +20,9 @@
       ignore_errors: true
     - name: Install Docker packages
       apt:
-#        name: "{{ item }}" 
-        name: ['docker-ce={{ dockerceversion }}','docker-ce-cli={{ dockercecliversion }}', 'containerd.io={{ containerdioversion }}']
-        state: present
+       name: "{{item}}"
+       state: latest
+      loop:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
