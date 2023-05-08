@@ -29,8 +29,8 @@
       shell: puppet ssl bootstrap
       ignore_errors: true
     - name: Sign Certificate
-      shell: sudo puppetserver ca sign --certname “{{agent_name}}”
-      delegate_to: “{{server_name}}”
+      shell: sudo puppetserver ca sign --certname agent_name
+      delegate_to: server_name
       ignore_errors: true
     - name: Connect agent to primary
       shell: puppet ssl bootstrap
