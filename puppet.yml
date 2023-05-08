@@ -7,14 +7,14 @@
   tasks:
     - name: Install package from .deb file
       apt:
-        deb:
-          path: https://apt.puppetlabs.com/puppet6-release-focal.deb
+        deb: https://apt.puppetlabs.com/puppet6-release-focal.deb
       ignore_errors: true
     - name: Install puppet agent
       apt:
         state: present
         name: puppet-agent
         update_cache: yes
+      ignore_errors: true
     - name: Config path to access puppet commands
       shell: export PATH=/opt/puppetlabs/bin:$PATH
     - name: Configure server settings
