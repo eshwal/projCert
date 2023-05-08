@@ -1,28 +1,17 @@
----
+--- 
 - hosts: slave
   become: yes
-  vars: 
-     dockerceversion: 5:18.09.9~3-0~ubuntu-bionic
-     dockercecliversion: 5:18.09.9~3-0~ubuntu-bionic
-     containerdioversion: 1.2.6-3
   tasks:
-    - name: Add Docker GPG key
-      apt_key: 
-        url: https://download.docker.com/linux/ubuntu/gpg
-    - name: Install basic list of packages
+    - name: Install Docker Engine
       apt:
-        name: ['apt-transport-https','ca-certificates','curl','gnupg2','software-properties-common']
+        name: docker.io
         state: present
-      ignore_errors: true
-    - name: Add Docker APT repository
-      apt_repository:
-          repo: deb https://download.docker.com/linux/ubuntu bionic stable
-      ignore_errors: true
-    - name: Install Docker packages
+    - name: Install Docker CLI
       apt:
-       name: "{{item}}"
-       state: latest
-      loop:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
+        name: docker-compose
+        state: present
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: true
