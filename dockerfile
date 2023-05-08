@@ -1,2 +1,2 @@
 FROM devopsedu/webapp
-COPY src/projCert /usr/local/src
+COPY ./website /usr/local/src
