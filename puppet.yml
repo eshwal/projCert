@@ -24,6 +24,7 @@
       shell: cd /opt/puppetlabs/bin 
     - name: Configure server settings
       shell: puppet config set server 172.31.24.17 --section main
+      ignore_errors: true
     - name: Connect agent to primary
       shell: puppet ssl bootstrap
     - name: Sign Certificate
